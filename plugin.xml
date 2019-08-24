@@ -32,8 +32,7 @@
     <engines>
       <engine name="cordova" version=">=3.1.0" /><!-- Needs cordova/urlutil -->
     </engines>
-    
-    <dependency id="cordova-plugin-cocoapod-support"/>
+
     <!-- android -->
     <platform name="android">
         <js-module src="www/inappbrowser.js" name="inappbrowser">
@@ -69,7 +68,6 @@
 
     <!-- ios -->
     <platform name="ios">
-        <pods-config ios-min-version="9.0" use-frameworks="true"/>
         <js-module src="www/inappbrowser.js" name="inappbrowser">
             <clobbers target="cordova.InAppBrowser.open" />
             <clobbers target="window.open" />
