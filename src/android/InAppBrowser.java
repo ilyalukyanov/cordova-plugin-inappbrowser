@@ -866,8 +866,9 @@ public class InAppBrowser extends CordovaPlugin {
                 {
                     enableFullScreen(cordova.getActivity(), dialog.getWindow());
                 }
-
-                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                if (android.os.Build.VERSION.SDK_INT >= 24) {
+                    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                }
                 dialog.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
                 dialog.setCancelable(true);
                 dialog.setInAppBroswer(getInAppBrowser());
