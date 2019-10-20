@@ -525,6 +525,8 @@ public class InAppBrowser extends CordovaPlugin {
      * Closes the dialog
      */
     public void closeDialog() {
+        InAppBrowser inAppBrowser = this;
+
         this.cordova.getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -541,6 +543,13 @@ public class InAppBrowser extends CordovaPlugin {
                         if (dialog != null) {
                             dialog.dismiss();
                             dialog = null;
+
+                            childView.clearHistory();
+                            childView.clearCache(false);
+                            childView.onPause();
+                            childView.destroy();
+
+                            inAppBrowser.inAppWebView = null;
                         }
                     }
                 });
